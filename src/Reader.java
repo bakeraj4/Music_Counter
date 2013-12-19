@@ -12,7 +12,6 @@ public class Reader {
 	Reader(){
 		String rootDirectory="C:\\Users\\Aaron\\Dropbox\\Avenged Sevenfold";//"F:\\music\\Avenged Sevenfold";//"F:\\music";
 		try {
-			//System.out.println(dictonary.size());
 			System.out.println("Files to be processed:");
 			findFiles(new File(rootDirectory));
 			System.out.println(myLib.toString());
@@ -41,25 +40,32 @@ public class Reader {
 	                String mYear = (id3.substring(CONSTANTS.OFFSET_YEAR[CONSTANTS.FROM], CONSTANTS.OFFSET_YEAR[CONSTANTS.TO])).trim();
 	                String mAlbum = (id3.substring(CONSTANTS.OFFSET_ALBUM[CONSTANTS.FROM], CONSTANTS.OFFSET_ALBUM[CONSTANTS.TO])).trim();
 	                Song s=new Song(0,mArtist,mTitle);
-	                if(myLib.hasBand(mArtist)){
-	                	if(myLib.hasAlbumn(mArtist, mAlbum)){//check has albumn
-	                		if(!myLib.hasSong(mArtist, mAlbum, mTitle)){//check if !has song
-	                			myLib.addSong(mArtist, mAlbum, s);
-	                		}
-	                	}
-	                	else
-	                		addSongtoNewAlbumn(mArtist, mAlbum, s);
-	                }
-	                else{
-	                	myLib.addBand(mArtist);
-	                	addSongtoNewAlbumn(mArtist, mAlbum, s);
-	                }
-	                //System.out.println(s.toString());
-	                //System.out.println();
+	                if(!(mTitle.equals("")||mArtist.equals("")||mAlbum.equals("")))
+	                	songCreator(mArtist,mAlbum,mTitle,s);
+	                else
+	                	System.out.println(fil.getAbsolutePath());
 	            }
 	            fis.close();
 			}		
 		}
+	}
+	
+	private void songCreator(String mArtist, String mAlbum, String mTitle, Song s){
+		if(myLib.hasBand(mArtist)){
+        	if(myLib.hasAlbumn(mArtist, mAlbum)){//check has albumn
+        		if(!myLib.hasSong(mArtist, mAlbum, mTitle)){//check if !has song
+        			myLib.addSong(mArtist, mAlbum, s);
+        		}
+        	}
+        	else
+        		addSongtoNewAlbumn(mArtist, mAlbum, s);
+        }
+        else{
+        	myLib.addBand(mArtist);
+        	addSongtoNewAlbumn(mArtist, mAlbum, s);
+        }
+        //System.out.println(s.toString());
+        //System.out.println();
 	}
 	
 	private void addSongtoNewAlbumn(String Artist, String Alb, Song s){
