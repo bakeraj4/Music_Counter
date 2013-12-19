@@ -15,6 +15,7 @@ public class Reader {
 			//System.out.println(dictonary.size());
 			System.out.println("Files to be processed:");
 			findFiles(new File(rootDirectory));
+			System.out.println(myLib.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

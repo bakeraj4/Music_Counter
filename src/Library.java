@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 
 public class Library {
@@ -51,9 +52,17 @@ public class Library {
 	}
 	
 	
-	//Set myBands=myLib.keySet();
-	public String 
-	//TODO toString
-		//go through each band and print the number of albumns
-			//then each albmun's to string
+	public String toString(){
+		String str="";
+		Set<String> myBands=myLib.keySet();
+		
+		for(String st: myBands){
+			str+=st+" has "+myLib.get(st).size()+" many albumns.\n\t";
+			for(Albumn alb: myLib.get(st)){
+				str+=alb.toString(false);//+"\n";
+			}
+		}
+		
+		return str;
+	}
 }

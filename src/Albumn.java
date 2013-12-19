@@ -63,13 +63,9 @@ public class Albumn {
 		if(band)
 			str+=this.creator+"\n\t";
 		for(Song s: songs)
-			str+=s.getCreator()+"\n\t";
+			str+=s.getName()+" "+s.getCreator()+"\n\t";
 		return str;
 	}
-	
-	//TODO to string(boolean)
-		//albumn name number of songs//if true <band's name> albumn name nuber of songs
-			//go through each song for the song tile
 	
 	/**
 	 * TODO - make a copmarator such that the albumns are sorted by the number of plays, tie breaker albumn with a single track
