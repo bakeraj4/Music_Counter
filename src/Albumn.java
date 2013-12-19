@@ -58,12 +58,15 @@ public class Albumn {
 		return songs.size();
 	}
 	
-	public String toString(boolean band){
+	public String toString(){
 		String str="";
-		if(band)
-			str+=this.creator+"\n\t";
-		for(Song s: songs)
-			str+=s.getName()+" "+s.getCreator()+"\n\t";
+		str+=this.getTitle()+"\n\t\t";
+		for(int i=0;i<songs.size();i++){
+			if(i==songs.size()-1)
+				str+=songs.get(i).getName()+"\n\t";
+			else
+				str+=songs.get(i).getName()+"\n\t\t";
+		}
 		return str;
 	}
 	

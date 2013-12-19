@@ -15,7 +15,11 @@ public class Library {
 	}
 	
 	public boolean hasAlbumn(String band, String alb){
-		return myLib.get(band).contains(alb);
+		for(int i=0;i<myLib.get(band).size();i++){
+			if(myLib.get(band).get(i).getTitle().equals(alb))
+				return true;
+		}
+		return false;
 	}
 	
 	public boolean hasSong(String band, String alb, String title){
@@ -59,7 +63,7 @@ public class Library {
 		for(String st: myBands){
 			str+=st+" has "+myLib.get(st).size()+" many albumns.\n\t";
 			for(Albumn alb: myLib.get(st)){
-				str+=alb.toString(false);//+"\n";
+				str+=alb.toString();//+"\n";
 			}
 		}
 		

@@ -10,14 +10,14 @@ public class Reader {
 	private Library myLib=new Library();
 	
 	Reader(){
-		String rootDirectory="C:\\Users\\Aaron\\Dropbox\\Avenged Sevenfold";//args[0];//the file path of the music
+		String rootDirectory="F:\\music\\Avenged Sevenfold";//"F:\\music";
 		try {
 			//System.out.println(dictonary.size());
 			System.out.println("Files to be processed:");
 			findFiles(new File(rootDirectory));
 			System.out.println(myLib.toString());
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(myLib.toString());
 		}
 	}
 	
