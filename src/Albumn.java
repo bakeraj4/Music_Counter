@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class Albumn {
@@ -60,7 +62,7 @@ public class Albumn {
 	
 	public String toString(){
 		String str="";
-		str+=this.getTitle()+"\n\t\t";
+		str+=this.getTitle()+" has "+songs.size()+" many songs.\n\t\t";
 		for(int i=0;i<songs.size();i++){
 			if(i==songs.size()-1)
 				str+=songs.get(i).getName()+"\n\t";
@@ -69,9 +71,4 @@ public class Albumn {
 		}
 		return str;
 	}
-	
-	/**
-	 * TODO - make a copmarator such that the albumns are sorted by the number of plays, tie breaker albumn with a single track
-	 * that is the highest, if tie again then second most .... if tie on last song the by alpha by albumn
-	 */
 }

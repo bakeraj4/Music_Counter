@@ -10,7 +10,7 @@ public class Reader {
 	private Library myLib=new Library();
 	
 	Reader(){
-		String rootDirectory="F:\\music\\Avenged Sevenfold";//"F:\\music";
+		String rootDirectory="C:\\Users\\Aaron\\Dropbox\\Avenged Sevenfold";//"F:\\music\\Avenged Sevenfold";//"F:\\music";
 		try {
 			//System.out.println(dictonary.size());
 			System.out.println("Files to be processed:");
@@ -54,8 +54,8 @@ public class Reader {
 	                	myLib.addBand(mArtist);
 	                	addSongtoNewAlbumn(mArtist, mAlbum, s);
 	                }
-	                System.out.println(s.toString());
-	                System.out.println();
+	                //System.out.println(s.toString());
+	                //System.out.println();
 	            }
 	            fis.close();
 			}		

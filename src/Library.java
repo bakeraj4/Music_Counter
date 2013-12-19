@@ -1,10 +1,13 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Set;
 
 
 public class Library {
 	private HashMap<String, ArrayList<Albumn>> myLib;
+	private AlbumnComp comp =new AlbumnComp();
 	
 	Library(){
 		myLib= new HashMap<String, ArrayList<Albumn>>();
@@ -39,6 +42,7 @@ public class Library {
 	
 	public void addAlb(String band, String Alb){
 		myLib.get(band).add(new Albumn(Alb, band));
+		Collections.sort(myLib.get(band),comp);
 	}
 	
 	public void addSong(String band, String alb,Song sng){
@@ -69,4 +73,21 @@ public class Library {
 		
 		return str;
 	}
+	
+	private class AlbumnComp implements Comparator<Albumn>{
+		@Override
+		public int compare(Albumn arg0, Albumn arg1) {
+			if(arg0.getSongs().size()<arg1.getSongs().size())
+				return 1;
+			else if(arg0.getSongs().size()==arg1.getSongs().size())
+				return ((arg0.getTitle().compareToIgnoreCase(arg1.getTitle())>0)?1:-1);
+			return -1;
+		}
+		
+	}
+	
+	/**
+	 * TODO - make a copmarator such that the albumns are sorted by the number of plays, tie breaker albumn with a single track
+	 * that is the highest, if tie again then second most .... if tie on last song the by alpha by albumn
+	 */
 }
