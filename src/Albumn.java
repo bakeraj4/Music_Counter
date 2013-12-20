@@ -66,6 +66,6 @@ public class Albumn {
 		for(int i=0;i<songs.size();i++){
 				str+="\n\t\t"+songs.get(i).getName();
 		}
-		return str;
+		return str+"\n";
 	}
 }

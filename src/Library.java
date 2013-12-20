@@ -67,10 +67,9 @@ public class Library {
 		for(String st: myBands){
 			str+=st+" has "+myLib.get(st).size()+" many albumns.";
 			for(Albumn alb: myLib.get(st)){
-				str+="\n\t"+alb.toString();//+"\n";
+				str+="\n\t"+alb.toString();
 			}
 		}
-//System.out.println(rankings());
 		return str;
 	}
 	
@@ -86,8 +85,18 @@ public class Library {
 		
 	}
 	
-	private ArrayList<String> rankings(){
-		return new ArrayList(myLib.keySet());
+	public ArrayList<String> rankings(){
+		ArrayList<String> ret= new ArrayList<String>(myLib.keySet());
+		for(int i=ret.size()-1;i>0;i--){
+			for(int j=i;j>0;j--){
+				if(myLib.get(ret.get(j)).size()>myLib.get(ret.get(j-1)).size()){//swap
+					String tmp= ret.get(j);
+					ret.set(j, ret.get(j-1));
+					ret.set(j-1, tmp);
+				}
+			}
+		}
+		return ret;
 	}
 	
 	//TODO make a web crawler to obtain an image for each band

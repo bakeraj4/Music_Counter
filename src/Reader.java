@@ -10,13 +10,14 @@ public class Reader {
 	private Library myLib=new Library();
 	
 	Reader(){
-		String rootDirectory="C:\\Users\\Aaron\\Dropbox\\Avenged Sevenfold";//"F:\\music\\Avenged Sevenfold";//"F:\\music";
+		String rootDirectory="F:\\music";//"C:\\Users\\Aaron\\Dropbox\\Avenged Sevenfold";//"F:\\music\\Avenged Sevenfold";//
 		try {
-			System.out.println("Files to be processed:");
 			findFiles(new File(rootDirectory));
 			System.out.println(myLib.toString());
 		} catch (IOException e) {
-			System.out.println(myLib.toString());
+			//System.out.println(myLib.toString());
+			System.out.println(myLib.rankings());
+			e.printStackTrace();
 		}
 	}
 	
@@ -43,7 +44,7 @@ public class Reader {
 	                if(!(mTitle.equals("")||mArtist.equals("")||mAlbum.equals("")))
 	                	songCreator(mArtist,mAlbum,mTitle,s);
 	                else
-	                	System.out.println(fil.getAbsolutePath());
+	                	System.out.println(fil.getName()+" cannot be processed.");
 	            }
 	            fis.close();
 			}		
