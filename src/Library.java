@@ -89,14 +89,22 @@ public class Library {
 		ArrayList<String> ret= new ArrayList<String>(myLib.keySet());
 		for(int i=ret.size()-1;i>0;i--){
 			for(int j=i;j>0;j--){
-				if(myLib.get(ret.get(j)).size()>myLib.get(ret.get(j-1)).size()){//swap
+				if(importance(ret.get(j))>importance(ret.get(j-1))){//swap
 					String tmp= ret.get(j);
 					ret.set(j, ret.get(j-1));
 					ret.set(j-1, tmp);
 				}
+				
 			}
 		}
 		return ret;
+	}
+
+	private int importance(String string){
+		int numSongs=0;
+		for(Albumn alb: myLib.get(string))
+			numSongs+=alb.numSongs();
+		return myLib.get(string).size()*numSongs;
 	}
 	
 	//TODO make a web crawler to obtain an image for each band
