@@ -65,12 +65,12 @@ public class Library {
 		Set<String> myBands=myLib.keySet();
 		
 		for(String st: myBands){
-			str+=st+" has "+myLib.get(st).size()+" many albumns.\n\t";
+			str+=st+" has "+myLib.get(st).size()+" many albumns.";
 			for(Albumn alb: myLib.get(st)){
-				str+=alb.toString();//+"\n";
+				str+="\n\t"+alb.toString();//+"\n";
 			}
 		}
-		
+//System.out.println(rankings());
 		return str;
 	}
 	
@@ -86,8 +86,11 @@ public class Library {
 		
 	}
 	
-	/**
-	 * TODO - make a copmarator such that the albumns are sorted by the number of plays, tie breaker albumn with a single track
-	 * that is the highest, if tie again then second most .... if tie on last song the by alpha by albumn
-	 */
+	private ArrayList<String> rankings(){
+		return new ArrayList(myLib.keySet());
+	}
+	
+	//TODO make a web crawler to obtain an image for each band
+	
+	//TODO create the collage of the images obtained and save it
 }

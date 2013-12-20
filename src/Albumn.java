@@ -62,12 +62,9 @@ public class Albumn {
 	
 	public String toString(){
 		String str="";
-		str+=this.getTitle()+" has "+songs.size()+" many songs.\n\t\t";
+		str+=this.getTitle()+" has "+songs.size()+" many songs.";
 		for(int i=0;i<songs.size();i++){
-			if(i==songs.size()-1)
-				str+=songs.get(i).getName()+"\n\t";
-			else
-				str+=songs.get(i).getName()+"\n\t\t";
+				str+="\n\t\t"+songs.get(i).getName();
 		}
 		return str;
 	}
