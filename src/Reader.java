@@ -27,7 +27,7 @@ public class Reader {
 			if(fil.isDirectory() && fil.getCanonicalPath().equals(fil.getAbsolutePath())){
 				findFiles(fil);
 			}
-			else if(fil.canRead() && fil.isFile() /*&& (fil.getName().contains(searchParam))-could be used for mp3, mp4, etc*/){
+			else if(fil.canRead() && fil.isFile() && isMusicFile(fil)){
 				fis =new FileInputStream(fil);
 				int size=(int)fil.length();
 				fis.skip(size-CONSTANTS.BYTE_128);
@@ -35,7 +35,7 @@ public class Reader {
 				fis.read(chunk);
 				String id3 =new String(chunk);
 	            String tag = id3.substring(CONSTANTS.OFFSET_TAG[CONSTANTS.FROM], CONSTANTS.OFFSET_TAG[CONSTANTS.TO]);
-	            if(tag.equals(CONSTANTS.ID3_TAG) && isMusicFile(fil)) {
+	            if(tag.equals(CONSTANTS.ID3_TAG)) {
 	                String mTitle = (id3.substring(CONSTANTS.OFFSET_TITLE[CONSTANTS.FROM], CONSTANTS.OFFSET_TITLE[CONSTANTS.TO])).trim();
 	                String mArtist = (id3.substring(CONSTANTS.OFFSET_ARTIST[CONSTANTS.FROM], CONSTANTS.OFFSET_ARTIST[CONSTANTS.TO])).trim();
 	                String mYear = (id3.substring(CONSTANTS.OFFSET_YEAR[CONSTANTS.FROM], CONSTANTS.OFFSET_YEAR[CONSTANTS.TO])).trim();

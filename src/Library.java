@@ -94,7 +94,6 @@ public class Library {
 					ret.set(j, ret.get(j-1));
 					ret.set(j-1, tmp);
 				}
-				
 			}
 		}
 		return ret;
