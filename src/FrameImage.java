@@ -35,7 +35,9 @@ class FrameImagePanel extends Panel{
         int x = (getWidth() - image.getWidth())/2;  
         int y = (getHeight() - image.getHeight())/2;  
         g.drawImage(image, x, y, this); 
-        //TODO this method will need to change to handle the array list of buffered images
+        //TODO this method will need to change to handle the array list of buffered images and places them in the correct area (some type of loop and place in the spiral in reverse such that the ones toward the front are on top of the previuos ones)
+        
+        //TODO need to save the image
     }  
    
     public Dimension getPreferredSize(){//TODO will need to change image[i] and the parameter of i 
