@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class Reader {
@@ -65,8 +66,6 @@ public class Reader {
         	myLib.addBand(mArtist);
         	addSongtoNewAlbumn(mArtist, mAlbum, s);
         }
-        //System.out.println(s.toString());
-        //System.out.println();
 	}
 	
 	private void addSongtoNewAlbumn(String Artist, String Alb, Song s){
@@ -81,5 +80,7 @@ public class Reader {
 		return false;
 	}
 	
-	
+	public ArrayList<String> getRanking(){
+		return myLib.rankings();
+	}
 }

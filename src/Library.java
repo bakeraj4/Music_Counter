@@ -105,8 +105,4 @@ public class Library {
 			numSongs+=alb.numSongs();
 		return myLib.get(string).size()*numSongs;
 	}
-	
-	//TODO make a web crawler to obtain an image for each band
-	
-	//TODO create the collage of the images obtained and save it
 }
