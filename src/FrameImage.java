@@ -1,6 +1,7 @@
 import java.awt.*;  
 import java.awt.event.*;  
 import java.awt.image.*;
+
 import javax.imageio.*;
 import javax.swing.JPanel;
 
@@ -14,10 +15,11 @@ import java.util.Date;
    
 public class FrameImage{  
     ArrayList<String> myURLs;
+    int numPerRow=10;
     public FrameImage(ArrayList<String> arr){
     	myURLs=arr;
     	FrameImagePanel Pane = new FrameImagePanel();
-    	Pane.setBounds(0, 0, 100, 100);
+    	Pane.setBounds(0, 0, 1000, (100*(arr.size()%10)));
     	Pane.setBackground(Color.BLACK); 
         Frame f = new Frame();  
         f.addWindowListener(new WindowAdapter(){  
@@ -26,9 +28,8 @@ public class FrameImage{
             }  
         });  
         f.add(Pane);
-       this.takeScreenShot(Pane);
-        //TODO change the sizes
-        f.setSize(400,400);  
+        this.takeScreenShot(Pane);
+        f.setSize(Pane.getWidth(), Pane.getHeight()+55);//55 was added so things aren't cut off because of the title bar
         f.setLocation(200,200);  
         f.setVisible(true);  
     }  
@@ -43,7 +44,6 @@ public class FrameImage{
     	try {
 			javax.imageio.ImageIO.write(finalImage, "jpeg",results);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
@@ -53,20 +53,21 @@ public class FrameImage{
 	   
 	    public FrameImagePanel(){
 	    	image=new BufferedImage[myURLs.size()];
-	        loadImage();  
+	        loadImage(); 
+	        repaint();
 	    }  
 	   
 	    public void paint(Graphics g){  
 	        super.paint(g);
-	        int x = (getWidth() - image[0].getWidth())/2;  
-	        int y = (getHeight() - image[0].getHeight())/2;  
-	        g.drawImage(image[0], x, y, this); 
-	        //TODO this method will need to change to handle the array list of buffered images and places them in the correct area (some type of loop and place in the spiral in reverse such that the ones toward the front are on top of the previuos ones)        
-	        
-	    }
-	  
-	    public Dimension getPreferredSize(){//TODO will need to change image[i] and the parameter of i 
-	        return new Dimension(image[0].getWidth(), image[0].getHeight());  
+	        int x = 0;  
+	        int y = 0;
+	        for(int i=0;i<image.length;i++){
+	        	if(x==900){
+	        		x=0;
+	        		y+=100;
+	        	}
+	        	g.drawImage(image[i].getScaledInstance(100, 100, Image.SCALE_SMOOTH), x, y, this); 
+	        }
 	    }  
 	   
 	    private void loadImage(){
@@ -80,6 +81,6 @@ public class FrameImage{
 	            }
 	        }catch(Exception e){
 	        }
-	    }  
+	    }
 	}
 }
