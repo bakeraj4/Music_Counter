@@ -19,7 +19,7 @@ public class FrameImage{
     public FrameImage(ArrayList<String> arr){
     	myURLs=arr;
     	FrameImagePanel Pane = new FrameImagePanel();
-    	Pane.setBounds(0, 0, 1000, (100*(arr.size()%10)));
+    	Pane.setBounds(0, 0, 1000, (100*((arr.size()%10==0)?1:arr.size()%10)));
     	Pane.setBackground(Color.BLACK); 
         Frame f = new Frame();  
         f.addWindowListener(new WindowAdapter(){  
@@ -62,11 +62,13 @@ public class FrameImage{
 	        int x = 0;  
 	        int y = 0;
 	        for(int i=0;i<image.length;i++){
+	        	g.drawImage(image[i].getScaledInstance(100, 100, Image.SCALE_SMOOTH), x, y, this); 
 	        	if(x==900){
 	        		x=0;
 	        		y+=100;
 	        	}
-	        	g.drawImage(image[i].getScaledInstance(100, 100, Image.SCALE_SMOOTH), x, y, this); 
+	        	else
+	        		x+=100;
 	        }
 	    }  
 	   
