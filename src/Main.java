@@ -21,6 +21,7 @@ public class Main {
 		//Reader r=new Reader();
 		//ImageSearcher is=new ImageSearcher(r.getRanking());		
 	    //TODO is.getURLS(); will be the parameter to the next line
-		new FrameImage(); 
+		new FrameImage();
+		new ImageSearcher(null);
 	}
 }
