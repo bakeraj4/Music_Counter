@@ -10,8 +10,8 @@ public class Reader {
 	private FileInputStream fis;
 	private Library myLib=new Library();
 	
-	Reader(){
-		String rootDirectory="F:\\music";//"C:\\Users\\Aaron\\Dropbox\\Avenged Sevenfold";//"F:\\music\\Avenged Sevenfold";//
+	Reader(){//TODO set to user choice, then to one of the following
+		String rootDirectory="C:\\Users\\Aaron\\Dropbox\\Avenged Sevenfold";//"F:\\music";//"F:\\music\\Avenged Sevenfold";//
 		try {
 			findFiles(new File(rootDirectory));
 			System.out.println(myLib.toString());

@@ -43,5 +43,9 @@ public class ImageSearcher {
 		}
 	}
 	
+	ArrayList<String> getURLs(){
+		return myURLs;
+	}
+	
 	//TODO create the collage of the images obtained and save it
 }
