@@ -3,28 +3,17 @@
  *
  */
 public class Song{
-	private int numPlayed;
 	private String creator;
 	private String name;
 	
 	Song(){
-		setNumPlayed(0);
 		setCreator(null);
 		setName(null);
 	}
 	
-	Song(int num, String creat, String title){
-		setNumPlayed(num);
+	Song(String creat, String title){
 		setCreator(creat);
 		setName(title);
-	}
-
-	public int getNumPlayed() {
-		return numPlayed;
-	}
-
-	public void setNumPlayed(int numPlayed) {
-		this.numPlayed = numPlayed;
 	}
 
 	public String getCreator() {
@@ -44,6 +33,6 @@ public class Song{
 	}
 	
 	public String toString(){
-		return this.creator+" wrote "+this.name+" and has been played "+this.numPlayed+" many times.";
+		return this.creator+" wrote "+this.name+".";
 	}
 }

@@ -37,11 +37,10 @@ public class FrameImage{
     public void takeScreenShot(Component comp){    
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         File results=new File("RESULTS_"+dateFormat.format(new Date()).replace('/', '_')+".jpg");
-        
     	BufferedImage finalImage = new BufferedImage(comp.getWidth(),comp.getHeight(),BufferedImage.TYPE_INT_RGB);
     	Graphics2D g2d=finalImage.createGraphics();
     	comp.paint(g2d);
-    	try {
+    	try {//TODO have the user choose the location of the image
 			javax.imageio.ImageIO.write(finalImage, "jpeg",results);
 		} catch (IOException e) {
 			e.printStackTrace();

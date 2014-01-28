@@ -10,15 +10,27 @@ public class Reader {
 	private FileInputStream fis;
 	private Library myLib=new Library();
 	
-	Reader(){//TODO set to user choice, then to one of the following
-		String rootDirectory="F:\\music";//"C:\\Users\\Aaron\\Dropbox\\Avenged Sevenfold";//"F:\\music\\Avenged Sevenfold";//
+	private static final String defaultDirectory="F:\\music";
+	private static final String backupDirectory="C:\\Users\\Aaron\\Dropbox\\Avenged Sevenfold";
+	
+	Reader(){
+		//TODO get the users input for a directory that they would like to use
+		String rootDirectory=defaultDirectory;
+		
+		//get user input of the location
+		//check that it makes sense
+		//set rootDirectory
+		
 		try {
 			findFiles(new File(rootDirectory));
 			System.out.println(myLib.toString());
-		} catch (IOException e) {
-			//System.out.println(myLib.toString());
-			System.out.println(myLib.rankings());
-			e.printStackTrace();
+		} catch (Exception e) {//has an error getting to the folder on the hard disk
+			try {
+				rootDirectory=backupDirectory;
+				findFiles(new File(rootDirectory));
+				System.out.println(myLib.toString());
+			} catch (Exception ee) {
+			}
 		}
 	}
 	
@@ -41,7 +53,7 @@ public class Reader {
 	                String mArtist = (id3.substring(CONSTANTS.OFFSET_ARTIST[CONSTANTS.FROM], CONSTANTS.OFFSET_ARTIST[CONSTANTS.TO])).trim();
 	                String mYear = (id3.substring(CONSTANTS.OFFSET_YEAR[CONSTANTS.FROM], CONSTANTS.OFFSET_YEAR[CONSTANTS.TO])).trim();
 	                String mAlbum = (id3.substring(CONSTANTS.OFFSET_ALBUM[CONSTANTS.FROM], CONSTANTS.OFFSET_ALBUM[CONSTANTS.TO])).trim();
-	                Song s=new Song(0,mArtist,mTitle);
+	                Song s=new Song(mArtist,mTitle);
 	                if(!(mTitle.equals("")||mArtist.equals("")||mAlbum.equals("")))
 	                	songCreator(mArtist,mAlbum,mTitle,s);
 	                else
@@ -76,7 +88,6 @@ public class Reader {
 	private boolean isMusicFile(File fil){
 		if(fil.getName().endsWith(".mp3"))
 			return true;
-		//TODO other file extensions
 		return false;
 	}
 	

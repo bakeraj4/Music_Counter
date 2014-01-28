@@ -30,25 +30,21 @@ public class ImageSearcher {
 			URL resURL=new URL(google+URLEncoder.encode(str+" :last.fm",charset));
 			InputStreamReader urlReader= new InputStreamReader(resURL.openStream(),charset);
 			GoogleResults googleRes= new Gson().fromJson(urlReader, GoogleResults.class);
-			//System.out.println(googleRes.getResponseData().getResults().get(0).getTitle());
-			/*for(int i=0;i<googleRes.getResponseData().getResults().size();i++){ 
-				System.out.println(googleRes.getResponseData().getResults().get(i).getUrl());
-			}*/
 			System.out.println("Finding: "+str);
-				myURLs.add(googleRes.getResponseData().getResults().get(0).getUrl());
+			myURLs.add(googleRes.getResponseData().getResults().get(0).getUrl());
+			//TODO find out why after a point all are giving errors, is there a limit of times I can use the google search i counted and 72 was the last one before printing 'error'
 		} catch (MalformedURLException e) {
+			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e){
-			System.out.println("error");
+			System.out.println("error"+e.toString());
 		}
 	}
 	
 	ArrayList<String> getURLs(){
 		return myURLs;
 	}
-	
-	//TODO create the collage of the images obtained and save it
 }
