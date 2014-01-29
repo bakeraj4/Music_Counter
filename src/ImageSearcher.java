@@ -17,7 +17,6 @@ public class ImageSearcher {
 	
 	ImageSearcher(ArrayList<String> bands){
 		myBands=bands;
-		findAll();
 	}
 
 	void findAll(){

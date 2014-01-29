@@ -51,7 +51,6 @@ public class Reader {
 	            if(tag.equals(CONSTANTS.ID3_TAG)) {
 	                String mTitle = (id3.substring(CONSTANTS.OFFSET_TITLE[CONSTANTS.FROM], CONSTANTS.OFFSET_TITLE[CONSTANTS.TO])).trim();
 	                String mArtist = (id3.substring(CONSTANTS.OFFSET_ARTIST[CONSTANTS.FROM], CONSTANTS.OFFSET_ARTIST[CONSTANTS.TO])).trim();
-	                String mYear = (id3.substring(CONSTANTS.OFFSET_YEAR[CONSTANTS.FROM], CONSTANTS.OFFSET_YEAR[CONSTANTS.TO])).trim();
 	                String mAlbum = (id3.substring(CONSTANTS.OFFSET_ALBUM[CONSTANTS.FROM], CONSTANTS.OFFSET_ALBUM[CONSTANTS.TO])).trim();
 	                Song s=new Song(mArtist,mTitle);
 	                if(!(mTitle.equals("")||mArtist.equals("")||mAlbum.equals("")))
