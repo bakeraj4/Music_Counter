@@ -37,9 +37,13 @@ public class ImageSearcher {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (UnknownHostException e){
+			throw new UnknownHostException();
+		}catch (IOException e) {
 			e.printStackTrace();
-		} //try catching the excepting then throwing it by hand
+		} 
+		
+		//try catching the excepting then throwing it by hand
 	}
 	
 	ArrayList<String> getURLs(){
