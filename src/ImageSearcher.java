@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import javax.imageio.*;
 
@@ -19,12 +20,12 @@ public class ImageSearcher {
 		myBands=bands;
 	}
 
-	void findAll(){
+	void findAll() throws UnknownHostException{
 		for(String str: myBands)
 			find(str);
 	}
 	
-	void find(String str){
+	void find(String str) throws UnknownHostException{
 		try {
 			URL resURL=new URL(google+URLEncoder.encode(str+" :last.fm",charset));
 			InputStreamReader urlReader= new InputStreamReader(resURL.openStream(),charset);
@@ -38,9 +39,7 @@ public class ImageSearcher {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (Exception e){
-			System.out.println("error"+e.toString());
-		}
+		} //try catching the excepting then throwing it by hand
 	}
 	
 	ArrayList<String> getURLs(){
