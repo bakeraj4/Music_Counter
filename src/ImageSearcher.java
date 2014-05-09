@@ -23,6 +23,7 @@ public class ImageSearcher {
 	void findAll() throws UnknownHostException{
 		for(String str: myBands)
 			find(str);
+			//either put a delay or at last hope a thread pool.
 	}
 	
 	void find(String str) throws UnknownHostException{

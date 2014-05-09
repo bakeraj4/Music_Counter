@@ -26,8 +26,7 @@ public class Main {
 			is.findAll();
 			FrameImage fi= new FrameImage(is.getURLs());
 		}catch(UnknownHostException e){//its not getting caught
-			//there will be a java.net.UnkownHostException due to the ajax.googleapis. 
-			System.out.println("no internets");
+			//there will be a java.net.UnkownHostException due to the ajax.googleapis not having internet.
 			saveFile();
 		}
 	}
